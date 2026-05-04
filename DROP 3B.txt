@@ -1,0 +1,14 @@
+import pandas as pd 
+
+columns=["sepal_length","sepal_width","petal_length","petal_width","species"]
+iris=pd.read_csv(
+    r"Iris.csv",
+    header=None,
+    names=columns
+)
+
+#filter only iris setosa
+setosa=iris[iris["species"]=="Iris-setosa"]
+
+#print statistics(drop species column)
+print(setosa.drop(columns=["species"]).describe())

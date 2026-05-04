@@ -1,0 +1,52 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix,accuracy_score,precision_score,recall_score
+
+file_path=r"Social_Network_Ads.csv"
+dataset =pd.read_csv(file_path)	
+
+print("First 5 rows :")
+print(dataset.head())
+
+print("\n Column Names :")
+print (dataset.columns)
+
+x=dataset[["Age","EstimatedSalary"]]
+y=dataset["Purchased"]
+
+x_train,x_test,y_train,y_test=train_test_split(
+    x,y,test_size=0.2,random_state=0
+)
+
+Scaler=StandardScaler()
+x_train=Scaler.fit_transform(x_train)
+x_test=Scaler.transform(x_test)
+
+classifier=LogisticRegression(random_state=0)
+classifier.fit(x_train,y_train)
+
+y_pred=classifier.predict(x_test)
+
+cm=confusion_matrix(y_test,y_pred)
+TN,FP,FN,TP=cm.ravel()
+
+cm=confusion_matrix(y_test,y_pred)
+TN,FP,FN,TP=cm.ravel()
+
+accuracy=accuracy_score(y_test,y_pred)
+error_rate=1-accuracy
+precision=precision_score(y_test,y_pred)
+recall=recall_score(y_test,y_pred)
+
+print("\n Performance matrix")
+print("true positive TP :",TP)
+print("false positive FP :",FP)
+print("true negative TN :",TN)
+print("false neagtive FN :",FN)
+print("Accuracy",accuracy)
+print("error rate",error_rate)
+print("precision",precision)
+print("recall",recall)

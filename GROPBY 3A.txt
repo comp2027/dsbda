@@ -1,0 +1,13 @@
+import pandas as pd
+
+data={
+    "Age_group":["20-30","20-30","30-40","30-40","40-50","40-50","20-30","30-40"],
+    "Income":[25000,28000,40000,42000,55000,58000,30000,39000]
+}
+df=pd.DataFrame(data)
+
+grouped_stats=df.groupby("Age_group")["Income"].agg(["mean","median","min","max","std"])
+print(grouped_stats)
+
+income_list=df.groupby("Age_group")["Income"].apply(list)
+print (income_list)
