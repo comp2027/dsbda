@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder,StandardScale
+from sklearn.preprocessing import LabelEncoder,StandardScaler
 
 url="Iris.csv"
 
