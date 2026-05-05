@@ -33,15 +33,13 @@ y_pred=classifier.predict(x_test)
 cm=confusion_matrix(y_test,y_pred)
 TN,FP,FN,TP=cm.ravel()
 
-cm=confusion_matrix(y_test,y_pred)
-TN,FP,FN,TP=cm.ravel()
 
 accuracy=accuracy_score(y_test,y_pred)
 error_rate=1-accuracy
 precision=precision_score(y_test,y_pred)
 recall=recall_score(y_test,y_pred)
 
-print("\n Performance matrix")
+print("\n Confusion matrix:",cm)
 print("true positive TP :",TP)
 print("false positive FP :",FP)
 print("true negative TN :",TN)
